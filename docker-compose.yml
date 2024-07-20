@@ -8,7 +8,7 @@ services:
     image: wordpress:latest
     restart: always
     ports:
-      - "80:80" 
+      - "80:80"
     environment:
       WORDPRESS_DB_HOST: ${WORDPRESS_DB_HOST}
       WORDPRESS_DB_NAME: ${WORDPRESS_DB_NAME}
@@ -17,7 +17,7 @@ services:
     volumes:
       - ${WORDPRESS_SITE_NAME}_wordpress_data:/var/www/html
     env_file:
-      - .env
+      - stack.env
 
   mysql:
     image: mysql:8.0
