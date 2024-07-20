@@ -1,0 +1,15 @@
+# A simple docker file that installs the micro editor.
+FROM wordpress:latest
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install micro editor
+RUN curl https://getmic.ro | bash \
+    && mv micro /usr/local/bin/
+
+WORKDIR /var/www/html
+
+CMD ["apache2-foreground"]
